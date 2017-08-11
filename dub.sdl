@@ -1,0 +1,8 @@
+name "keephdalive-cli"
+description "A command-line interface to keephdalive.."
+copyright "Copyright © 2017"
+authors "Paul Crane"
+dependency "ctoptions" version="*"
+dependency "dapplicationbase" version="*"
+dependency "dfileutils" version="*"
+dependency "keephdalive" version="*"
