@@ -34,37 +34,7 @@ public:
 
 	bool addPath(const string path, const bool shouldWrite = false)
 	{
-		/*if(path.exists)
-		{
-			immutable string normalizedFilePath = buildNormalizedPath(path, writeToFileName_);
-			immutable string locationsFile = buildNormalizedPath(path_.getDir("config"), WRITE_TO_LOCATIONS_FILENAME);
-			immutable bool alreadyKnownLocation = locationAlreadyExists(path);
-
-			if(!alreadyKnownLocation)
-			{
-				if(shouldWrite)
-				{
-					auto f = File(locationsFile, "a");
-					f.writeln(path);
-				}
-
-				locations_ ~= path;
-				writer_.addLocation(normalizedFilePath);
-
-				writeln("Added new path: ", path);
-			}
-			else
-			{
-				writeln("That path already exists!");
-			}
-
-			return true;
-		}
-		else
-		{
-			return false;
-		}*/
-		return true;
+		return writer_.addLocation(path, shouldWrite);
 	}
 
 	void startApplicationTimer()
