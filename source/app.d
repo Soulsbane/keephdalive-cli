@@ -10,9 +10,7 @@ import dapplicationbase;
 import dfileutils;
 import keephdalive.writer;
 
-immutable string DEFAULT_LOCATIONS_DATA = "./\n";
 immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
-immutable string DEFAULT_WRITE_TO_FILENAME = "keephdalive.txt"; // TODO: Perhaps make it hidden.
 
 struct Options
 {
@@ -40,7 +38,6 @@ public:
 	void startApplicationTimer()
 	{
 		fileWriteDelay_ = options_.getDelay(DEFAULT_FILE_WRITE_DELAY);
-		writeToFileName_ = options_.getFilename(DEFAULT_WRITE_TO_FILENAME);
 
 		debug
 		{
