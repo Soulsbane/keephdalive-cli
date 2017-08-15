@@ -10,7 +10,6 @@ import dapplicationbase;
 import dfileutils;
 import keephdalive.writer;
 
-immutable string WRITE_TO_LOCATIONS_FILENAME = "locations.dat";
 immutable string DEFAULT_LOCATIONS_DATA = "./\n";
 immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
 immutable string DEFAULT_WRITE_TO_FILENAME = "keephdalive.txt"; // TODO: Perhaps make it hidden.
@@ -33,22 +32,9 @@ public:
 		writer_ = new KeepAliveWriter;
 	}
 
-	void loadWriteToLocations()
-	{
-		immutable string locationsFile = buildNormalizedPath(path_.getDir("config"), WRITE_TO_LOCATIONS_FILENAME);
-
-		ensureFileExists(locationsFile, DEFAULT_LOCATIONS_DATA);
-		immutable auto lines = locationsFile.readText.splitLines();
-
-		foreach(filePath; lines)
-		{
-			addPath(filePath);
-		}
-	}
-
 	bool addPath(const string path, const bool shouldWrite = false)
 	{
-		if(path.exists)
+		/*if(path.exists)
 		{
 			immutable string normalizedFilePath = buildNormalizedPath(path, writeToFileName_);
 			immutable string locationsFile = buildNormalizedPath(path_.getDir("config"), WRITE_TO_LOCATIONS_FILENAME);
@@ -77,7 +63,8 @@ public:
 		else
 		{
 			return false;
-		}
+		}*/
+		return true;
 	}
 
 	void startApplicationTimer()
@@ -123,23 +110,18 @@ public:
 	}
 
 private:
-	bool locationAlreadyExists(const string path) const
-	{
-		return locations_.canFind(path);
-	}
-
 	string writeToFileName_ = DEFAULT_WRITE_TO_FILENAME;
 	long fileWriteDelay_ = DEFAULT_FILE_WRITE_DELAY;
 	string[] locations_;
 
 	KeepAliveWriter writer_;
+
 }
 
 void main(string[] arguments)
 {
 	auto app = new KeepAliveApp;
 
-	app.create("Raijinsoft", "keephdalive");
-	app.loadWriteToLocations();
+	app.create("Raijinsoft", "keephdalive-cli");
 	app.handleCmdLineArguments(arguments);
 }
