@@ -10,6 +10,8 @@ import dapplicationbase;
 import dfileutils;
 import keephdalive.writer;
 
+immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
+
 struct Options
 {
 	@GetOptOptions("How many minutes to wait in between each write.")
@@ -75,13 +77,12 @@ public:
 	}
 
 private:
-	immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
-
 	string writeToFileName_ = DEFAULT_WRITE_TO_FILENAME;
 	long fileWriteDelay_ = DEFAULT_FILE_WRITE_DELAY;
 	string[] locations_;
 
 	KeepAliveWriter writer_;
+
 }
 
 void main(string[] arguments)
