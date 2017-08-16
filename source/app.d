@@ -30,7 +30,7 @@ public:
 		writer_ = new KeepAliveWriter;
 	}
 
-	bool addPath(const string path, const bool shouldWrite = false)
+	bool addPath(const string path, const bool shouldWrite = true)
 	{
 		return writer_.addLocation(path, shouldWrite);
 	}
