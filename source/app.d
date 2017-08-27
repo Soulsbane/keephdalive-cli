@@ -57,9 +57,9 @@ public:
 
 	override void onValidArguments()
 	{
-		if(options_.path != string.init)
+		if(options_.hasPath())
 		{
-			immutable bool added = addPath(options_.path);
+			immutable bool added = addPath(options_.getPath());
 
 			if(added)
 			{
