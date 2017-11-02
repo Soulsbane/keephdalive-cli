@@ -88,6 +88,5 @@ private:
 void main(string[] arguments)
 {
 	auto app = new KeepAliveApp;
-
 	app.create("Raijinsoft", "keephdalive-cli", arguments);
 }
