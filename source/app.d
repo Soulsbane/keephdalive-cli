@@ -63,6 +63,7 @@ public:
 
 			if(added)
 			{
+				writeln("Added path: ", options_.getPath());
 				onNoArguments();
 			}
 			else
