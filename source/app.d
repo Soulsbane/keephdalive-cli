@@ -18,7 +18,7 @@ struct Options
 	size_t delay = DEFAULT_FILE_WRITE_DELAY;
 	@GetOptOptions("Name of the file to write to.")
 	string filename = DEFAULT_WRITE_TO_FILENAME;
-	@GetOptOptions("Add a path to the list of paths to be written to.", "ap", "add-path")
+	@DisableSave @GetOptOptions("Add a path to the list of paths to be written to.", "ap", "add-path")
 	string path;
 }
 
