@@ -8,7 +8,7 @@ import std.algorithm;
 import ctoptions;
 import dapplicationbase;
 import dfileutils;
-import keephdalive.writer;
+import keephdaliveapi.writer;
 
 immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
 
@@ -35,7 +35,7 @@ public:
 		return writer_.addLocation(path, shouldWrite);
 	}
 
-	void startApplicationTimer()
+	/*void startApplicationTimer()
 	{
 		fileWriteDelay_ = options_.getDelay(DEFAULT_FILE_WRITE_DELAY);
 
@@ -47,12 +47,12 @@ public:
 		{
 			writer_.start(dur!("minutes")(fileWriteDelay_));
 		}
-	}
+	}*/
 
 	override void onNoArguments()
 	{
 		saveOptions();
-		startApplicationTimer();
+		//startApplicationTimer();
 	}
 
 	override void onValidArguments()
@@ -83,11 +83,10 @@ private:
 	string[] locations_;
 
 	KeepAliveWriter writer_;
-
 }
 
 void main(string[] arguments)
 {
 	auto app = new KeepAliveApp;
-	app.create("Raijinsoft", "keephdalive-cli", arguments);
+	app.create("Raijinsoft", "keephdalive", arguments);
 }
