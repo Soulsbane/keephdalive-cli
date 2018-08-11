@@ -35,24 +35,9 @@ public:
 		return writer_.addLocation(path, shouldWrite);
 	}
 
-	/*void startApplicationTimer()
-	{
-		fileWriteDelay_ = options_.getDelay(DEFAULT_FILE_WRITE_DELAY);
-
-		debug
-		{
-			writer_.start(dur!("seconds")(fileWriteDelay_));
-		}
-		else
-		{
-			writer_.start(dur!("minutes")(fileWriteDelay_));
-		}
-	}*/
-
 	override void onNoArguments()
 	{
 		saveOptions();
-		//startApplicationTimer();
 	}
 
 	override void onValidArguments()
