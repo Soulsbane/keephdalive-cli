@@ -8,9 +8,7 @@ import std.algorithm;
 import ctoptions;
 import dapplicationbase;
 import dfileutils;
-import keephdaliveapi.writer;
-
-immutable size_t DEFAULT_FILE_WRITE_DELAY = 5;
+import keephdaliveapi.constants;
 
 struct Options
 {
@@ -27,12 +25,13 @@ class KeepAliveApp : Application!Options
 public:
 	this()
 	{
-		writer_ = new KeepAliveWriter;
+		//writer_ = new KeepAliveWriter;
 	}
 
 	bool addPath(const string path, const Flag!"shouldWrite" shouldWrite = Yes.shouldWrite)
 	{
-		return writer_.addLocation(path, shouldWrite);
+		//return writer_.addLocation(path, shouldWrite);
+		return true;
 	}
 
 	override void onNoArguments()
@@ -66,8 +65,6 @@ private:
 	string writeToFileName_ = DEFAULT_WRITE_TO_FILENAME;
 	long fileWriteDelay_ = DEFAULT_FILE_WRITE_DELAY;
 	string[] locations_;
-
-	KeepAliveWriter writer_;
 }
 
 void main(string[] arguments)
