@@ -23,14 +23,8 @@ struct Options
 class KeepAliveApp : Application!Options
 {
 public:
-	this()
-	{
-		//writer_ = new KeepAliveWriter;
-	}
-
 	bool addPath(const string path, const Flag!"shouldWrite" shouldWrite = Yes.shouldWrite)
 	{
-		//return writer_.addLocation(path, shouldWrite);
 		return true;
 	}
 
