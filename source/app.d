@@ -8,7 +8,9 @@ import std.algorithm;
 import ctoptions;
 import dapplicationbase;
 import dfileutils;
-import keephdaliveapi.constants;
+import keephdaliveapi;
+
+import client;
 
 struct Options
 {
@@ -23,6 +25,11 @@ struct Options
 class KeepAliveApp : Application!Options
 {
 public:
+	this()
+	{
+		client_ = new KeepAliveClient;
+	}
+
 	bool addPath(const string path, const Flag!"shouldWrite" shouldWrite = Yes.shouldWrite)
 	{
 		return true;
@@ -59,6 +66,8 @@ private:
 	string writeToFileName_ = DEFAULT_WRITE_TO_FILENAME;
 	long fileWriteDelay_ = DEFAULT_FILE_WRITE_DELAY;
 	string[] locations_;
+	KeepAliveSettings settings_;
+	KeepAliveClient client_;
 }
 
 void main(string[] arguments)
